@@ -1,0 +1,60 @@
+run:
+  samples: 1000 # Number of trajectories
+  max_episodes: 1
+  log_path: ''
+  device: ''
+  model: 'gpt4o-mini-202409' # 'gpt-4-latest-A'
+  temperature: 0.7
+  top_p: 0.95
+  frequency_penalty: 0
+  presence_penalty: 0
+  stop: ""
+  dynode_learning_rate: 1e-2
+  rnn_learning_rate: 1e-2
+  optimizer: 'pytorch'
+  keep_top_samples: 16 
+  reflection_history: 16
+  sub_group_resample: 4
+  generations: 20
+  nsdt_patience: 20
+  optimize_params: true
+  optimization:
+    patience: 100
+    log_optimization: true
+  pytorch_as_optimizer:
+    batch_size: 1000
+    learning_rate: 1e-2
+    weight_decay: 0.0
+    epochs: 2000
+    log_interval: 10
+  dynode_retrain_model: true
+  dynode_saved_models_folder: 'saved_models/26012024'
+setup:
+  trajectories_sweep: [10000]
+  use_azure_api: true
+  debug_mode: false
+  flush_mode: false
+  multi_process_results: false
+  multi_process_cores: 4
+  experiment: 'MAIN_TABLE' # ['LESS_SAMPLES', 'MAIN_TABLE', 'OOD_INSIGHT', 'NSDT_ABLATION_NO_CRITIC', 'NSDT_ABLATION_NO_MEMORY']
+  methods_to_evaluate: ['NSDT'] # ['NSDT', 'DyNODE', 'Transformer', 'RNN', 'SINDY', 'GP', 'ZeroShot', 'ZeroOptim', 'DyNODE', 'SINDY']
+  envs_to_evaluate: ['Cancer-untreated', 'Cancer-chemo', 'Cancer', 'Dataset-3DLV', 'Dataset-HL', 'COVID']
+  wandb:
+    project: RealEnvGen
+    track: false
+  log_dir: logs
+  torch_deterministic: true
+  seed_start: 10
+  seed_runs: 10
+  enable_tests: false
+  cuda: true
+  data_science_env_use_description: false
+  open_ai_rate_limit_requests_per_minute: 3000
+  api_retry_with_exponential_backoff__initial_delay: 1
+  api_retry_with_exponential_backoff__exponential_base: 2
+  api_retry_with_exponential_backoff__jitter: true
+  api_retry_with_exponential_backoff__max_retries: 10
+  api_request_timeout: 60000
+  api_stream: false
+  force_recache: false
+  load_from_cache: true

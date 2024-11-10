@@ -1,0 +1,14 @@
+wandb
+gym==0.23.1
+pygame
+openml
+timeout_decorator
+openai==0.27.8
+scipy
+pandas
+tqdm
+tiktoken
+scikit-learn
+pygount
+matplotlib
+sympy2jax
